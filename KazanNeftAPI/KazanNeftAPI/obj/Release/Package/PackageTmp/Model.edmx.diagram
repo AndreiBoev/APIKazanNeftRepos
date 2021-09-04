@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c8271cf583f64298ac376b9bdb84ad05" Name="Diagram1">
+        <EntityTypeShape EntityType="KazanNeftModel.AssetGroups" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="KazanNeftModel.AssetPhotos" Width="1.5" PointX="7.5" PointY="7.75" />
+        <EntityTypeShape EntityType="KazanNeftModel.Assets" Width="1.5" PointX="5.25" PointY="3.125" />
+        <EntityTypeShape EntityType="KazanNeftModel.AssetTransferLogs" Width="1.5" PointX="7.5" PointY="3.5" />
+        <EntityTypeShape EntityType="KazanNeftModel.DepartmentLocations" Width="1.5" PointX="3" PointY="3.5" />
+        <EntityTypeShape EntityType="KazanNeftModel.Departments" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="KazanNeftModel.Employees" Width="1.5" PointX="3" PointY="8.125" />
+        <EntityTypeShape EntityType="KazanNeftModel.Images" Width="1.5" PointX="9.75" PointY="1.875" />
+        <EntityTypeShape EntityType="KazanNeftModel.Locations" Width="1.5" PointX="0.75" PointY="1.125" />
+        <AssociationConnector Association="KazanNeftModel.FK_Assets_AssetGroups" />
+        <AssociationConnector Association="KazanNeftModel.FK_AssetPhotos_Assets" />
+        <AssociationConnector Association="KazanNeftModel.FK_Assets_DepartmentLocations" />
+        <AssociationConnector Association="KazanNeftModel.FK_Assets_Employees" />
+        <AssociationConnector Association="KazanNeftModel.FK_AssetTransfers_Assets" />
+        <AssociationConnector Association="KazanNeftModel.FK_AssetTransferLogs_DepartmentLocations" />
+        <AssociationConnector Association="KazanNeftModel.FK_AssetTransferLogs_DepartmentLocations1" />
+        <AssociationConnector Association="KazanNeftModel.FK_DepartmentLocations_Departments" />
+        <AssociationConnector Association="KazanNeftModel.FK_DepartmentLocations_Locations" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

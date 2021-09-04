@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KazanNeftModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="KazanNeftEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AssetGroups" EntityType="KazanNeftModel.AssetGroups" />
+    <EntitySet Name="AssetPhotos" EntityType="KazanNeftModel.AssetPhotos" />
+    <EntitySet Name="Assets" EntityType="KazanNeftModel.Assets" />
+    <EntitySet Name="AssetTransferLogs" EntityType="KazanNeftModel.AssetTransferLogs" />
+    <EntitySet Name="DepartmentLocations" EntityType="KazanNeftModel.DepartmentLocations" />
+    <EntitySet Name="Departments" EntityType="KazanNeftModel.Departments" />
+    <EntitySet Name="Employees" EntityType="KazanNeftModel.Employees" />
+    <EntitySet Name="Images" EntityType="KazanNeftModel.Images" />
+    <EntitySet Name="Locations" EntityType="KazanNeftModel.Locations" />
+    <AssociationSet Name="FK_Assets_AssetGroups" Association="KazanNeftModel.FK_Assets_AssetGroups">
+      <End Role="AssetGroups" EntitySet="AssetGroups" />
+      <End Role="Assets" EntitySet="Assets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetPhotos_Assets" Association="KazanNeftModel.FK_AssetPhotos_Assets">
+      <End Role="Assets" EntitySet="Assets" />
+      <End Role="AssetPhotos" EntitySet="AssetPhotos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Assets_DepartmentLocations" Association="KazanNeftModel.FK_Assets_DepartmentLocations">
+      <End Role="DepartmentLocations" EntitySet="DepartmentLocations" />
+      <End Role="Assets" EntitySet="Assets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Assets_Employees" Association="KazanNeftModel.FK_Assets_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Assets" EntitySet="Assets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetTransfers_Assets" Association="KazanNeftModel.FK_AssetTransfers_Assets">
+      <End Role="Assets" EntitySet="Assets" />
+      <End Role="AssetTransferLogs" EntitySet="AssetTransferLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetTransferLogs_DepartmentLocations" Association="KazanNeftModel.FK_AssetTransferLogs_DepartmentLocations">
+      <End Role="DepartmentLocations" EntitySet="DepartmentLocations" />
+      <End Role="AssetTransferLogs" EntitySet="AssetTransferLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetTransferLogs_DepartmentLocations1" Association="KazanNeftModel.FK_AssetTransferLogs_DepartmentLocations1">
+      <End Role="DepartmentLocations" EntitySet="DepartmentLocations" />
+      <End Role="AssetTransferLogs" EntitySet="AssetTransferLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DepartmentLocations_Departments" Association="KazanNeftModel.FK_DepartmentLocations_Departments">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="DepartmentLocations" EntitySet="DepartmentLocations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DepartmentLocations_Locations" Association="KazanNeftModel.FK_DepartmentLocations_Locations">
+      <End Role="Locations" EntitySet="Locations" />
+      <End Role="DepartmentLocations" EntitySet="DepartmentLocations" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AssetGroups">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Assets" Relationship="KazanNeftModel.FK_Assets_AssetGroups" FromRole="AssetGroups" ToRole="Assets" />
+  </EntityType>
+  <EntityType Name="AssetPhotos">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssetID" Type="Int64" Nullable="false" />
+    <Property Name="AssetPhoto" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Assets" Relationship="KazanNeftModel.FK_AssetPhotos_Assets" FromRole="AssetPhotos" ToRole="Assets" />
+  </EntityType>
+  <EntityType Name="Assets">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssetSN" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="AssetName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentLocationID" Type="Int64" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int64" Nullable="false" />
+    <Property Name="AssetGroupID" Type="Int64" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="WarrantyDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="AssetGroups" Relationship="KazanNeftModel.FK_Assets_AssetGroups" FromRole="Assets" ToRole="AssetGroups" />
+    <NavigationProperty Name="AssetPhotos" Relationship="KazanNeftModel.FK_AssetPhotos_Assets" FromRole="Assets" ToRole="AssetPhotos" />
+    <NavigationProperty Name="DepartmentLocations" Relationship="KazanNeftModel.FK_Assets_DepartmentLocations" FromRole="Assets" ToRole="DepartmentLocations" />
+    <NavigationProperty Name="Employees" Relationship="KazanNeftModel.FK_Assets_Employees" FromRole="Assets" ToRole="Employees" />
+    <NavigationProperty Name="AssetTransferLogs" Relationship="KazanNeftModel.FK_AssetTransfers_Assets" FromRole="Assets" ToRole="AssetTransferLogs" />
+  </EntityType>
+  <EntityType Name="AssetTransferLogs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssetID" Type="Int64" Nullable="false" />
+    <Property Name="TransferDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FromAssetSN" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ToAssetSN" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="FromDepartmentLocationID" Type="Int64" Nullable="false" />
+    <Property Name="ToDepartmentLocationID" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Assets" Relationship="KazanNeftModel.FK_AssetTransfers_Assets" FromRole="AssetTransferLogs" ToRole="Assets" />
+    <NavigationProperty Name="DepartmentLocations" Relationship="KazanNeftModel.FK_AssetTransferLogs_DepartmentLocations" FromRole="AssetTransferLogs" ToRole="DepartmentLocations" />
+    <NavigationProperty Name="DepartmentLocations1" Relationship="KazanNeftModel.FK_AssetTransferLogs_DepartmentLocations1" FromRole="AssetTransferLogs" ToRole="DepartmentLocations" />
+  </EntityType>
+  <EntityType Name="DepartmentLocations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmentID" Type="Int64" Nullable="false" />
+    <Property Name="LocationID" Type="Int64" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Assets" Relationship="KazanNeftModel.FK_Assets_DepartmentLocations" FromRole="DepartmentLocations" ToRole="Assets" />
+    <NavigationProperty Name="AssetTransferLogs" Relationship="KazanNeftModel.FK_AssetTransferLogs_DepartmentLocations" FromRole="DepartmentLocations" ToRole="AssetTransferLogs" />
+    <NavigationProperty Name="AssetTransferLogs1" Relationship="KazanNeftModel.FK_AssetTransferLogs_DepartmentLocations1" FromRole="DepartmentLocations" ToRole="AssetTransferLogs" />
+    <NavigationProperty Name="Departments" Relationship="KazanNeftModel.FK_DepartmentLocations_Departments" FromRole="DepartmentLocations" ToRole="Departments" />
+    <NavigationProperty Name="Locations" Relationship="KazanNeftModel.FK_DepartmentLocations_Locations" FromRole="DepartmentLocations" ToRole="Locations" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DepartmentLocations" Relationship="KazanNeftModel.FK_DepartmentLocations_Departments" FromRole="Departments" ToRole="DepartmentLocations" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Assets" Relationship="KazanNeftModel.FK_Assets_Employees" FromRole="Employees" ToRole="Assets" />
+  </EntityType>
+  <EntityType Name="Images">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="Binary" Nullable="false" MaxLength="200" FixedLength="false" />
+    <Property Name="Data" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="Length" Type="Int32" Nullable="false" />
+    <Property Name="Width" Type="Int32" Nullable="false" />
+    <Property Name="Height" Type="Int32" Nullable="false" />
+    <Property Name="ContentType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Locations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DepartmentLocations" Relationship="KazanNeftModel.FK_DepartmentLocations_Locations" FromRole="Locations" ToRole="DepartmentLocations" />
+  </EntityType>
+  <Association Name="FK_Assets_AssetGroups">
+    <End Type="KazanNeftModel.AssetGroups" Role="AssetGroups" Multiplicity="1" />
+    <End Type="KazanNeftModel.Assets" Role="Assets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AssetGroups">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Assets">
+        <PropertyRef Name="AssetGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetPhotos_Assets">
+    <End Type="KazanNeftModel.Assets" Role="Assets" Multiplicity="1" />
+    <End Type="KazanNeftModel.AssetPhotos" Role="AssetPhotos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Assets">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AssetPhotos">
+        <PropertyRef Name="AssetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Assets_DepartmentLocations">
+    <End Type="KazanNeftModel.DepartmentLocations" Role="DepartmentLocations" Multiplicity="1" />
+    <End Type="KazanNeftModel.Assets" Role="Assets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DepartmentLocations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Assets">
+        <PropertyRef Name="DepartmentLocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Assets_Employees">
+    <End Type="KazanNeftModel.Employees" Role="Employees" Multiplicity="1" />
+    <End Type="KazanNeftModel.Assets" Role="Assets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Assets">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetTransfers_Assets">
+    <End Type="KazanNeftModel.Assets" Role="Assets" Multiplicity="1" />
+    <End Type="KazanNeftModel.AssetTransferLogs" Role="AssetTransferLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Assets">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AssetTransferLogs">
+        <PropertyRef Name="AssetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetTransferLogs_DepartmentLocations">
+    <End Type="KazanNeftModel.DepartmentLocations" Role="DepartmentLocations" Multiplicity="1" />
+    <End Type="KazanNeftModel.AssetTransferLogs" Role="AssetTransferLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DepartmentLocations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AssetTransferLogs">
+        <PropertyRef Name="FromDepartmentLocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetTransferLogs_DepartmentLocations1">
+    <End Type="KazanNeftModel.DepartmentLocations" Role="DepartmentLocations" Multiplicity="1" />
+    <End Type="KazanNeftModel.AssetTransferLogs" Role="AssetTransferLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DepartmentLocations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AssetTransferLogs">
+        <PropertyRef Name="ToDepartmentLocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DepartmentLocations_Departments">
+    <End Type="KazanNeftModel.Departments" Role="Departments" Multiplicity="1" />
+    <End Type="KazanNeftModel.DepartmentLocations" Role="DepartmentLocations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DepartmentLocations">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DepartmentLocations_Locations">
+    <End Type="KazanNeftModel.Locations" Role="Locations" Multiplicity="1" />
+    <End Type="KazanNeftModel.DepartmentLocations" Role="DepartmentLocations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DepartmentLocations">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
