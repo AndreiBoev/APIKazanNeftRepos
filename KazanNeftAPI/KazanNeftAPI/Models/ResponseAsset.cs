@@ -12,8 +12,7 @@ namespace KazanNeftAPI.Models
             ID = asset.ID;
             AssetName = asset.AssetName;
             AssetSN = asset.AssetSN;
-            DepartmentID = new KazanNeftEntities().Assets.ToList()
-                .FirstOrDefault(p => p.ID == asset.ID).DepartmentLocations.DepartmentID;
+            DepartmentID = asset.DepartmentLocations.DepartmentID;
             WarrantyDate = asset.WarrantyDate;
         }
 

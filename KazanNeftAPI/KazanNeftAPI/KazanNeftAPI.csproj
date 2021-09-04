@@ -178,7 +178,6 @@
     <Compile Include="Controllers\AssetsController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DepartmentLocations.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
