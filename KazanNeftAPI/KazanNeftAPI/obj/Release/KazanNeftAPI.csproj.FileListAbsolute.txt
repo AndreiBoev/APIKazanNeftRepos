@@ -86,3 +86,4 @@ C:\Users\Admin\source\repos\APIKazanNeftRepos\KazanNeftAPI\KazanNeftAPI\obj\Rele
 C:\Users\Admin\source\repos\APIKazanNeftRepos\KazanNeftAPI\KazanNeftAPI\obj\Release\KazanNeftAPI.csproj.CopyComplete
 C:\Users\Admin\source\repos\APIKazanNeftRepos\KazanNeftAPI\KazanNeftAPI\obj\Release\KazanNeftAPI.dll
 C:\Users\Admin\source\repos\APIKazanNeftRepos\KazanNeftAPI\KazanNeftAPI\obj\Release\KazanNeftAPI.pdb
+C:\Users\Admin\source\repos\APIKazanNeftRepos\KazanNeftAPI\KazanNeftAPI\obj\Release\KazanNeftAPI.csproj.AssemblyReference.cache
