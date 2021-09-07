@@ -17,20 +17,9 @@ namespace KazanNeftAPI.Controllers
         private KazanNeftEntities _db = new KazanNeftEntities();
 
         // GET: api/Assets
-        public IHttpActionResult GetAssets(int? departmentId, int?
-            
-            assetGroupId)
+        public IHttpActionResult GetAssets()
         {
-            List<Assets> assets = _db.Assets.ToList();
-            if (departmentId is int)
-            {
-                assets = assets.Where(p => p.DepartmentLocations.DepartmentID == departmentId).ToList();
-            }
-            if (assetGroupId is int)
-            {
-                assets = assets.Where(p => p.AssetGroupID == assetGroupId).ToList();
-            }
-            return Ok(assets.ConvertAll(p => new Models.ResponseAsset(p)).ToList());
+            return Ok(_db.Assets.ToList().ConvertAll(p=>new Models.ResponseAsset(p)).ToList());
         }
 
         // GET: api/Assets/5
