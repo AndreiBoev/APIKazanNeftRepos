@@ -176,7 +176,9 @@
     </Compile>
     <Compile Include="Controllers\AssetGroupsController.cs" />
     <Compile Include="Controllers\AssetsController.cs" />
+    <Compile Include="Controllers\DepartmentLocationsController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DepartmentLocations.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -214,6 +216,8 @@
     <Compile Include="Models\ResponseAsset.cs" />
     <Compile Include="Models\ResponseAssetGroups.cs" />
     <Compile Include="Models\ResponseDepartment.cs" />
+    <Compile Include="Models\ResponseDepartmentLocations.cs" />
+    <Compile Include="Models\ResponseEmploye.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
